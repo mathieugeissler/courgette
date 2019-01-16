@@ -1,6 +1,6 @@
 module.exports = function clickElementWithText(nth, text) {
   const EC = protractor.ExpectedConditions;
-
+  text = text.replace("\\'", "'");
   let xpath = `//*[text()="${text}" or @value="${text}"]/ancestor-or-self::*[self::a or self::button or self::input]`;
   if (nth) {
     // remove nd from 2nd for example

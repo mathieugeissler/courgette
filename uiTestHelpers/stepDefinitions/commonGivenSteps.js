@@ -59,7 +59,7 @@ const steps = [
 
 if (!argv.genFiles) {
   steps.forEach((step) => {
-    const matchPattern = "([^']*)?";
+    const matchPattern = "([^'\\\\]*(?:\\\\.[^'\\\\]*)*)";
     const matcher = step.matcher
       .replace(new RegExp(`(${placeholders.join('|')})`, 'g'), matchPattern);
 

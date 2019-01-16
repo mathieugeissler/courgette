@@ -6,6 +6,8 @@ module.exports = function setSelectValueByOptionText(locatorKey, itemText) {
 
       element.click();
 
+      itemText = itemText.replace("\\'", "'");
+
       return element.$$('option')
         .then((options) => Promise.all(options.map((option) => option.getText().then((text) => {
           if (itemText === text) {

@@ -2,6 +2,7 @@ module.exports = function checkContainsText(locatorKey, containsStr, expectedTex
   return this.getCurrentPage().getElementWhenInDOM(locatorKey)
     .then((el) =>
       el.getText().then((text) => {
+        expectedText = expectedText.replace("\\'", "'");
         if ((typeof containsStr === 'string' && containsStr.indexOf('contain') === 0) || containsStr === true) {
           return expect(text).to.include(expectedText);
         }

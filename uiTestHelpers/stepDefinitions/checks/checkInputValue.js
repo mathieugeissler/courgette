@@ -3,6 +3,7 @@ module.exports = function checkInputValue(locatorKey, isNot, expectedVal) {
 
   return this.getCurrentPage().getElementWhenInDOM(locatorKey)
     .then((el) => {
+      expectedVal = expectedVal.replace("\\'", "'");
       const elValuePromise = el.getAttribute('value');
       return isNot ?
         expect(elValuePromise).to.not.eventually.equal(expectedValue) :
